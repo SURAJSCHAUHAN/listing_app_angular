@@ -1,0 +1,13 @@
+<div id="page-wrap">
+    <div id="max-width-column" *ngIf="this.authService.currentUser$ | async">
+        <app-navbar></app-navbar>
+        <div id="content-wrap">
+            <router-outlet/>
+        </div>
+        <button (click)="signOutClicked()">Sign Out</button>
+    </div>
+    <div id="max-width-column" *ngIf="!(this.authService.currentUser$ | async)">
+        <h1>You need to signin first</h1>
+        <button (click)="signInClicked()">SignIn</button>
+    </div>
+</div>
